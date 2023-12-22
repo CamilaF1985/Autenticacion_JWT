@@ -5,7 +5,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object().shape({
-  correo: Yup.string().email('Ingresa una dirección de correo válida').required('El correo es obligatorio'),
+  correo: Yup.string()
+    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Ingresa una dirección de correo válida')
+    .required('El correo es obligatorio'),
   password: Yup.string()
     .required('La contraseña es obligatoria')
     .matches(/^\S*$/, 'La contraseña no puede contener espacios')

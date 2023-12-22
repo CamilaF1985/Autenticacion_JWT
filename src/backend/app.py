@@ -94,9 +94,7 @@ def registro():
     usuarios.append(usuario)
 
     guardar_usuarios(usuarios)
-    access_token = create_access_token(identity=correo)
-    guardar_token_en_archivo(correo, access_token)
-    return jsonify({'mensaje': 'Registro exitoso', 'access_token': access_token, 'redirect_url': '/'})
+    return jsonify({'mensaje': 'Registro exitoso', 'redirect_url': '/'})
 
 # Ruta para el formulario de inicio de sesión
 @app.route('/inicio_sesion', methods=['POST'])
@@ -112,6 +110,7 @@ def inicio_sesion():
         if usuario['correo'] == correo and check_password_hash(usuario['password'], password):
             access_token = create_access_token(identity=correo)
             print(f'Token creado para el usuario {correo}: {access_token}')
+            guardar_token_en_archivo(correo, access_token)
             return jsonify({'mensaje': 'Inicio de sesión exitoso', 'usuario': usuario, 'access_token': access_token})
 
     return jsonify({'error': 'Credenciales incorrectas'}), 401
@@ -144,6 +143,7 @@ def cerrar_sesion():
 
 if __name__ == '__main__':
     app.run(debug=True, port=3000)
+
 
 
 
