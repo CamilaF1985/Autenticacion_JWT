@@ -9,8 +9,8 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "start": "npm-run-all -p install-backend start-backend dev",
-    "install-backend": "cd .. && cd src/backend && pipenv install",
-    "start-backend": "cd .. && cd src/backend && pipenv run python app.py"
+    "install-backend": "cd src/backend && pipenv install --dev",
+    "start-backend": "cd src/backend && pipenv run python app.py"
   },
   "dependencies": {
     "axios": "^1.6.2",
@@ -37,6 +37,9 @@
     "vite": "^5.0.8"
   }
 }
+
+
+
 
 
 
