@@ -8,10 +8,11 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "npm-run-all -p install-backend start-backend dev",
+    "start": "npm-run-all -p install-backend start-all",
     "install-backend": "cd src/backend && pipenv install --dev",
+    "start-all": "npm-run-all -p start-backend dev",
     "start-backend": "cd src/backend && pipenv run python app.py"
-  },
+  },  
   "dependencies": {
     "axios": "^1.6.2",
     "bootstrap": "^5.3.2",
